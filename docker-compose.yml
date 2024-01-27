@@ -1,11 +1,41 @@
 version: '3.3'
 
 networks:
-  business-intelligence-net:
+  dashboard-net:
     driver: bridge
 
-volumes:
-    prometheus_data: {}
-    grafana_data: {}
-
+#volumes:
+    
 services:
+## --------------------------------------------- POSTGRES SECTION ---------------------------------------------
+  # Database Container (postgres)
+  postgres:
+    container_name: pg_container
+    build: ./postgres
+    restart: always
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: Password
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    networks:
+      - dashboard-net
+
+  # Container of PGAdmin (web-based admin tool for postgres database)
+  pgadmin:
+    container_name: pg_admin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.com
+      PGADMIN_DEFAULT_PASSWORD: Password
+    links:
+      - postgres
+    ports:
+      - "3031:80"
+    networks:
+      - dashboard-net
+## ------------------------------------------- END POSTGRES SECTION -------------------------------------------
