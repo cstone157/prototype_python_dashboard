@@ -39,11 +39,11 @@ services:
 #    networks:
 #      - dashboard-net
 ## ------------------------------------------- END POSTGRES SECTION -------------------------------------------
-
-  web:
-    build:.
-	command: python manage.py runserver localhost:8000
-	ports:
-	  - 8000:8000
-	networks:
-	  - dashboard-net
+#
+#  web:
+#    build:.
+#	command: python manage.py runserver localhost:8000
+#	ports:
+#	  - 8000:8000
+#	networks:
+#	  - dashboard-net
