@@ -68,3 +68,5 @@ $ docker build -t python-django-app .
 RUN
 $ docker run -it -p 8000:8000 python-django-app
 
+RUN and BUILD using docker-compose
+docker-compose up -d --build

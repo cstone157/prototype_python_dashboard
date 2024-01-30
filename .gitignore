@@ -1,1 +1,5 @@
 app/django-dashboard
+
+app/mysite/hello_world/__pycache__
+app/mysite/hello_world/migrations/__pycache__
+app/mysite/mysite/__pycache__
